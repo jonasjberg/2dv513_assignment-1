@@ -63,7 +63,7 @@ follows:
 
 
 \subsection{Solution}
-The propsed solution is shown in Figure~\ref{fig:task4}.
+The proposed solution is shown in Figure~\ref{fig:task4}.
 
 \begin{figure}[htbp]
   \centering
@@ -72,4 +72,30 @@ The propsed solution is shown in Figure~\ref{fig:task4}.
   \label{fig:task3}
 \end{figure}
 
-Some of the attributes have been bundled into new entities.
+Some of the original attributes have been bundled into new entities. The
+original attributes that contained a underline and a shared prefix was
+extracted into a new entity. The common prefix became the entity name. This
+change seemed very similar to refactoring techniques I frequently use when
+writing software.
+
+The new entities were then linked using the most basic relations, with names
+borrowed from the previous task.
+
+Broadly, applications where maintainability and adjusting the change are
+likely; I.E. the schema will have to be reworked or the software application
+somehow needs to query the data in some new, initially unforeseen way.
+
+This seems analogous to structuring software; smaller, modules with well
+defined responsibilities are easier to maintain and reason about than a bigger
+module that handles many different tasks.
+
+It is often desirable to modularize systems and integrate these modules using
+well defined boundaries, which makes replacing modules much easier.
+In this case, the scheduling database really should not be all too tangled up
+with course-specific data --- a course might use a different method for
+examining the students. Some courses might not have any exams at all, while
+some might use a online system to do the exams.
+
+The entities are related through the unique identifier attributes but they each
+handle a distinctively different kind of data, that is open for modifications
+without disrupting the other tables.
