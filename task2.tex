@@ -47,16 +47,26 @@ follows:
 
 
 \subsection{Solutions}
+See Figure~\ref{fig:task2}.
 
-  \begin{enumerate}
-    \item
-      % Every baby is the result of a unique birth, and every birth is of a
-      % unique baby.
-      % TODO: ..
-    \item
-      % In addition to (1), every baby has a unique mother.
-      % TODO: ..
-    \item
-      % In addition to (1) and (2), for every birth there is a unique doctor.
-      % TODO: ..
-  \end{enumerate}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{include/task2.eps}
+    \caption{Entity-relationship Diagram for Task 2}
+  \label{fig:task2}
+\end{figure}
+
+
+All possible flaws are related to the restrictions in multiplicities between
+babies and births, as well as between babies and mothers.
+
+There are many possible edge-cases to consider, a mother might give birth to
+many babies during one birth; twins, etc.
+A mother might also not give birth to a living child. But the birth would
+nevertheless have employed a doctor, nurses, etc. as to require storage in a
+database for keeping track of hours worked, etc. Howeever, if the primary
+concern of the system is to keep track of babies, this case might be considered
+``illegal''. But otherwise, the case of a \emph{NULL} baby is not handled by
+this design, the birth explicitly requires one baby but it should probable
+allow for any number, or at least one or more.
