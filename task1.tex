@@ -80,35 +80,65 @@ follows:
 \subsection{Solutions}
 
 \subsubsection{1 --- There are no actors in this database that have been in no movies}
-False. Double lines between \texttt{ACTOR} and \texttt{PERFORMS\_IN} describe a
-total participation of \texttt{ACTOR} in the \texttt{PERFORMS\_IN} relationship
-to the \texttt{MOVIE} entity.
-This essentially means that individuals that have been an actor is considered an actor.
+\textbf{False.} Double lines between \texttt{ACTOR} and \texttt{PERFORMS\_IN}
+describe a total participation of \texttt{ACTOR} in the \texttt{PERFORMS\_IN}
+relationship to the \texttt{MOVIE} entity.
+This essentially means that individuals that have been an actor is considered
+an actor.
 
 
 \subsubsection{2 --- There are some actors who have acted in more than ten movies}
-% TODO: ..
+\textbf{Maybe.} The relationship between \texttt{ACTOR} and \texttt{MOVIE} is
+many-to-many.  The diagram does not include specific counts.
 
 \subsubsection{3 --- Some actors have done a lead role in multiple movies}
-% TODO: ..
+\textbf{Maybe.} The \texttt{LEAD\_ROLE} relationship only specifies a maximum
+of \texttt{ACTOR} entities per \texttt{MOVIE}.  There is no minimum
+requirement; a movie can have either none, one or two actors in lead roles.
+However, all movies must have at least one \texttt{LEAD\_ROLE} relationship,
+because of the double lines --- total participation. 
+
 
 \subsubsection{4 --- A movie can have only a maximum of two lead actors}
-% TODO: ..
+\textbf{True.} See above and Figure~\ref{fig:cse_slides_21}
+from \cite{2dv513:cse_slides_21}.
+
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.6\linewidth]{include/cse_slides_21.eps}
+    \caption{Diagram comparing the different notations
+             \cite{2dv513:cse_slides_21}}
+  \label{fig:cse_slides_21}
+\end{figure}
+
 
 \subsubsection{5 --- Every director has been an actor in some movie}
-% TODO: ..
+\textbf{False.} The relationship \texttt{ALSO\_A\_DIRECTOR} is one-to-one,
+meaning that an \texttt{ACTOR} entity that is also a director must be
+related to one \tettt{DIRECTOR} entity.
+An \texttt{ACTOR} must per definition have a \texttt{ALSO\_A\_DIRECTOR}
+relationship to \texttt{DIRECTOR} in order to actually be a director,
+as far as this system is concerned.
 
 \subsubsection{6 --- No producer has ever been an actor}
-% TODO: ..
+\textbf{Maybe.} This might be true, but the diagram only specifies that
+\emph{if} an \texttt{ACTOR} was a \texttt{PRODUCER}, it would be a one-to-one
+relationship through \texttt{ACTOR\_PRODUCER}.
+
+See the previous motivation. 
 
 \subsubsection{7 --- A producer cannot be an actor in some other movie}
-% TODO: ..
+\textbf{False.} There are no such restrictions.
+% TODO: Add further motivation..
 
 \subsubsection{8 --- There are movies with more than a dozen actors}
-% TODO: ..
+\textbf{Maybe.} This might be true, but the diagram does not include
+any such restriction or requirement.
 
 \subsubsection{9 --- Some producers have been a director as well}
-% TODO: ..
+\textbf{Maybe.} This might be true. It is \emph{allowed}, but we would have
+to query the actual database in order to get this information.
 
 \subsubsection{10 --- Most movies have one director and one producer}
 % TODO: ..
